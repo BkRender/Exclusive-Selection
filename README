@@ -1,4 +1,4 @@
-This DoItYourself plugin should help you implemente an exclusive selection feature.
+This DoItYourself plugin should help you implement an "exclusive selection" feature.
 ie:
 1. You set a list of items
 2. between each item there is an hidden section
