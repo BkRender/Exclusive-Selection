@@ -1,0 +1,10 @@
+This DoItYourself plugin should help you implemente an exclusive selection feature.
+ie:
+1. You set a list of items
+2. between each item there is an hidden section
+3. When you unfold an initially hidden section, that makes the one appear and hide the one which was opened - if there was one
+
+Label sections should have a class "selector" set on
+Content section should have a class "exclusive" set on.
+
+BkYannC

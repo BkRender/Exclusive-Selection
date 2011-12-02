@@ -1,0 +1,57 @@
+<html>
+    <script type="text/javascript">
+
+        var selectorSections = new Array();
+        var contentSections = new Array();
+
+        function cleanState(me,secNb) {
+            var i = 1;
+            console.log(secNb);
+            while (i != secNb) {
+                //console.log("i=" + i + " secNb=" + secNb);
+                contentSections.push(document.getElementById('row' + i));
+                i++;
+            }
+           
+            Bk.initContext();
+
+            for (var sec in contentSections) {
+
+                var state = getComputedStyle(contentSections[sec]).display;
+                
+                if (contentSections[sec].previousElementSibling === me) {
+                    if (state == 'none') {
+                        Bk.toggle({id: contentSections[sec].id, transition: 'unfold'});
+                    }
+                } else if (state == 'block') {
+                    Bk.toggle({id: contentSections[sec].id, transition: 'unfold'});	
+                }
+            }
+
+            Bk.releaseContext();
+            contentSections.length = 0;
+        }
+
+        var myCustomersStateCleaner =   
+            function init() {
+                var i = 0;
+                // How many section?
+                var secNb = (document.getElementsByClassName('selector').length);
+
+                while (i != secNb) {                                       
+                    // selecting elements
+                    var currentLabel = document.getElementsByClassName('selector')[i];
+                    // setting an ID on found div
+                    currentLabel.setAttribute('id', 'initHidden' + i);
+                    //setting a onclick
+                    currentLabel.setAttribute('onclick', 'cleanState(this,' + secNb + ');return false;');
+                    // recording div into the array
+                    selectorSections.push(document.getElementsByClassName('selector')[i].id);
+                    i++;
+                }
+            }
+
+        addEventListener('bkPageLoaded',myCustomersStateCleaner, false);
+    
+    </script>
+</html>
